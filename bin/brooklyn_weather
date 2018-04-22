@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require './lib/brooklyn_weather'
+
+
+#encapsulates all of the code in one place
+BrooklynWeather::CLI.new.call
