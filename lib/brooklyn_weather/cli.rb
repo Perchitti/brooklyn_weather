@@ -1,6 +1,6 @@
   class BrooklynWeather::CLI
 
-def call
+def intro
   puts "Welcome to Brooklyn Weather"
   current
   day
@@ -10,7 +10,11 @@ def current
   puts "The current temperature is:"
 
   #insert scraping here
+
+  @weather = BrooklynWeather::Scraper.forecast
 end
+
+
 def day
   puts "Would you like to see the forecast for today or tomorrow?
   If you would like the weather for another borough type 'exit'."
