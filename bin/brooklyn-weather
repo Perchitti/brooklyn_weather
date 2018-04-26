@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "brooklyn_weather"
+require "./lib/brooklyn_weather"
 
 
 #encapsulates all of the code in one place
