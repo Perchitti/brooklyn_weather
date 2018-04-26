@@ -3,7 +3,7 @@ require 'open-uri'
 #require 'pry'
 #require 'nokogiri'
 
-#WHY DOESNT IS ALLOW NOKOGIRI FROM HERE?
+#WHY DOESNT It ALLOW NOKOGIRI FROM HERE?
 
 
 #requiring version

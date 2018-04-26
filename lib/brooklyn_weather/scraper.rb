@@ -6,6 +6,8 @@ attr_accessor :high, :low, :description, :name, :feel
 
   def self.forecast
     self.scrape
+    #bring up in 1on1. How do I utilize this method within the CLI?
+    #How can I loop through this?
   end
 
 
@@ -27,7 +29,8 @@ attr_accessor :high, :low, :description, :name, :feel
       @name = today_temp.name = doc.search(".bg.bg-su h4").text.strip
       @high = today_temp.high = doc.search(".bg.bg-su span.large-temp").first.text.strip
       @low = today_temp.low = doc.search(".bg.bg-s span.large-temp").text.strip
-      @feel = today_temp.feel = doc.search(".bg.bg-su span.realfeel").text.strip
+      @feel = today_temp.feel = doc.search(".bg.bg-su span.realfeel").first.text.strip
+      #bring this up in 1on1. How to strip second realfeel temp
       @description = today_temp.description = doc.search(".bg.bg-su .info span.cond").first.text.strip
       today_temp
     end

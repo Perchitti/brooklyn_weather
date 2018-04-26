@@ -58,13 +58,13 @@ attr_accessor :name
         end
 
 
-  def exit
-    puts ""
-    puts "    'Spread love, it's the Brooklyn way.' - Notorious B.I.G"
-    puts ""
-    puts "                       Goodbye!  "
-    puts ""
-  end
+      def exit
+        puts ""
+        puts "    'Spread love, it's the Brooklyn way.' - Notorious B.I.G"
+        puts ""
+        puts "                       Goodbye!  "
+        puts ""
+      end
 
 
 end
