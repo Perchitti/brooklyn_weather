@@ -12,7 +12,7 @@ attr_accessor :name
 #def testing_scrape
 #  @day = BrooklynWeather::Scraper.forecast
 #  @day.each do |temp|
-#    puts "#{temp.name}"
+#    puts temp
 #  end
 #end
 
