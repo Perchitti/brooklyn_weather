@@ -1,5 +1,7 @@
   class BrooklynWeather::CLI
 
+attr_accessor :name
+
     def intro
       puts ""
       puts "              Welcome to Brooklyn Weather"
@@ -12,15 +14,11 @@
         puts "            The current temperature is #{@current_temp}"
         puts ""
     end
-
-    def weather
-      @weather = Brooklyn::Scraper.forecast
-      @weather.each |temp|
-      puts "???????"
-    end
+#  end
 
 
     def day
+      puts ""
       puts "Would you like to see the forecast for 'today' or 'tomorrow'?"
       puts "Gotta go? Type 'exit'."
       puts ""
@@ -28,15 +26,36 @@
       input = gets.strip.downcase
         case input
         when "today"
-          puts "Today's forecast:"
+          today_weather
+          day
         when "tomorrow"
-          puts "Tomorrow's forecast:"
+          tomorrow_weather
+          day
         when "exit"
           exit
         else
           day
         end
       end
+
+
+    def today_weather
+      @weather = BrooklynWeather::Scraper.scrape_today
+        puts ""
+        puts "#{@weather.name}"
+        puts "#{@weather.description}"
+        puts "#{@weather.high} || #{@weather.low}"
+        puts "#{@weather.feel}"
+      end
+
+      def tomorrow_weather
+        @weather = BrooklynWeather::Scraper.scrape_tomorrow
+          puts ""
+          puts "#{@weather.name}"
+          puts "#{@weather.description}"
+          puts "#{@weather.high}"
+          puts "#{@weather.feel}"
+        end
 
 
   def exit

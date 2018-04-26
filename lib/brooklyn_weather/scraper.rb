@@ -2,7 +2,7 @@
 
 class BrooklynWeather::Scraper
 
-attr_accessor :high, :low, :description, :name
+attr_accessor :high, :low, :description, :name, :feel
 
   def self.forecast
     self.scrape
@@ -19,21 +19,16 @@ attr_accessor :high, :low, :description, :name
 #https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651
 # http://brooklyn.news12.com/weather
 
-  def self.current_scraper
-    doc = Nokogiri::HTML(open("https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651"
-      ))
-      current_temp = doc.search("#current-city-tab span.local-temp").text.strip
-    end
-
 
   def self.scrape_today
     doc = Nokogiri::HTML(open("https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651"
       ))
       today_temp = self.new
-      today_temp.name = doc.search(".bg.bg-r h4").text.strip
-      today_temp.high = doc.search(".bg.bg-r span.large-temp").text.strip
-      #today_temp.low = "60"
-      today_temp.description = doc.search(".bg.bg-r span.cond").text.strip
+      @name = today_temp.name = doc.search(".bg.bg-su h4").text.strip
+      @high = today_temp.high = doc.search(".bg.bg-su span.large-temp").first.text.strip
+      @low = today_temp.low = doc.search(".bg.bg-s span.large-temp").text.strip
+      @feel = today_temp.feel = doc.search(".bg.bg-su span.realfeel").text.strip
+      @description = today_temp.description = doc.search(".bg.bg-su .info span.cond").first.text.strip
       today_temp
     end
 
@@ -42,14 +37,19 @@ attr_accessor :high, :low, :description, :name
       doc = Nokogiri::HTML(open("https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651"
         ))
       tomorrow_temp = self.new
-      tomorrow_temp.name = doc.search(".bg.bg-su h4").text.strip
-      tomorrow_temp.high = doc.search(".bg.bg-su span.large-temp").text.strip
-      #tomorrow_temp.low = " 80"
-      tomorrow_temp.description = doc.search(".bg.bg-su span.cond").text.strip
+      @name = tomorrow_temp.name = doc.search(".bg.bg-r h4").text.strip
+      @high = tomorrow_temp.high = doc.search(".bg.bg-r span.large-temp").text.strip
+      @feel = tomorrow_temp.feel = doc.search(".bg.bg-r span.realfeel").text.strip
+      @description = tomorrow_temp.description = doc.search(".bg.bg-r span.cond").text.strip
       tomorrow_temp
     end
 
 
+    def self.current_scraper
+      doc = Nokogiri::HTML(open("https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651"
+        ))
+        current_temp = doc.search("#current-city-tab span.local-temp").text.strip
+      end
 
 
 end
