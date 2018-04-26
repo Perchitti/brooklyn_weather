@@ -9,6 +9,13 @@ attr_accessor :name
       day
     end
 
+#def testing_scrape
+#  @day = BrooklynWeather::Scraper.forecast
+#  @day.each do |temp|
+#    puts "#{temp.name}"
+#  end
+#end
+
     def current
       @current_temp = BrooklynWeather::Scraper.current_scraper
         puts "            The current temperature is #{@current_temp}"
