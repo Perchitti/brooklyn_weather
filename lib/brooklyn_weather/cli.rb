@@ -1,7 +1,5 @@
   class BrooklynWeather::CLI
 
-attr_accessor :name
-
     def intro
       puts ""
       puts "              Welcome to Brooklyn Weather"
@@ -51,8 +49,9 @@ attr_accessor :name
         puts ""
         puts "#{@weather.name}"
         puts "#{@weather.description}"
-        puts "#{@weather.high} || #{@weather.low}"
-        puts "#{@weather.feel}"
+        puts "High:#{@weather.high}F"
+        puts "Low:#{@weather.low.slice!(1..-1)}"
+        puts "Tonight: #{@weather.tonight}"
       end
 
       def tomorrow_weather
@@ -60,8 +59,9 @@ attr_accessor :name
           puts ""
           puts "#{@weather.name}"
           puts "#{@weather.description}"
-          puts "#{@weather.high}"
-          puts "#{@weather.feel}"
+          puts "High: #{@weather.high}F"
+          puts "Low: #{@weather.low.slice!(1..-1)}"
+          puts "Tonight: #{@weather.tonight}"
         end
 
 
