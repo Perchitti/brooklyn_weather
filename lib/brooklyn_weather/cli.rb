@@ -9,8 +9,8 @@
 
 #def testing_scrape
 #  @day = BrooklynWeather::Scraper.forecast
-#  @day.each do |temp|
-#    puts temp
+#  @day.all do |temp|
+#    puts "#{temp.name}"
 #  end
 #end
 
@@ -49,8 +49,8 @@
         puts ""
         puts "#{@weather.name}"
         puts "#{@weather.description}"
-        puts "High:#{@weather.high}F"
-        puts "Low:#{@weather.low.slice!(1..-1)}"
+        puts "High: #{@weather.high.slice!(0..2)}F"
+        puts "Low: #{@weather.low.slice!(0..2)}F"
         puts "Tonight: #{@weather.tonight}"
       end
 
@@ -61,7 +61,7 @@
           puts "#{@weather.description}"
           puts "High: #{@weather.high}F"
           puts "Low: #{@weather.low.slice!(1..-1)}"
-          puts "Tonight: #{@weather.tonight}"
+          puts "Night: #{@weather.tonight}"
         end
 
 
