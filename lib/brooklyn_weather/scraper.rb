@@ -4,19 +4,19 @@ class BrooklynWeather::Scraper
 
 attr_accessor :high, :low, :description, :name, :tonight
 
-  def self.forecast
-    self.scrape
+  #def self.forecast
+  #  self.scrape
     #bring up in 1on1. How do I utilize this method within the CLI?
     #How can I loop through this?
-  end
+  #end
 
 
-  def self.scrape
-    weather = []
-      weather << self.scrape_today
-      weather << self.scrape_tomorrow
-    weather
-  end
+#  def self.scrape
+  #  weather = []
+  #    weather << self.scrape_today
+  #    weather << self.scrape_tomorrow
+  #  weather
+#  end
 
 #https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651
 
@@ -25,10 +25,10 @@ attr_accessor :high, :low, :description, :name, :tonight
     doc = Nokogiri::HTML(open("https://www.accuweather.com/en/us/brooklyn-ny/11210/daily-weather-forecast/334651?day=1"
       ))
       today_temp = self.new
-      @name = today_temp.name = doc.search("li.day.fday1.current.first.cl h4").text.strip
-      @high = today_temp.high = doc.search("li.day.fday1.current.first.cl span.large-temp").text.strip
-      @low = today_temp.low = doc.search("li.day.fday1.current.first.cl span.small-temp").text.strip
-      @description = today_temp.description = doc.search("li.day.fday1.current.first.cl .info span.cond").text.strip
+      @name = today_temp.name = doc.search(".clearfix h3.lt time").text.strip
+      @high = today_temp.high = doc.search("#detail-day-night .day span.large-temp").text.strip
+      @low = today_temp.low = doc.search("#detail-day-night .night span.large-temp").text.strip
+      @description = today_temp.description = doc.search("#detail-day-night .day .cond").text.strip
       @tonight = today_temp.tonight = doc.search("#detail-day-night .night .cond").text.strip
       today_temp
     end
