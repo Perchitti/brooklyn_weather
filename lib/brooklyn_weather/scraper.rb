@@ -4,20 +4,6 @@ class BrooklynWeather::Scraper
 
 attr_accessor :high, :low, :description, :name, :tonight
 
-  #def self.forecast
-  #  self.scrape
-    #bring up in 1on1. How do I utilize this method within the CLI?
-    #How can I loop through this?
-  #end
-
-
-#  def self.scrape
-  #  weather = []
-  #    weather << self.scrape_today
-  #    weather << self.scrape_tomorrow
-  #  weather
-#  end
-
 #https://www.accuweather.com/en/us/brooklyn-ny/11210/weather-forecast/334651
 
 
@@ -55,14 +41,3 @@ attr_accessor :high, :low, :description, :name, :tonight
 
 
 end
-
-
-#Could something like this work for scrape_today?
-#doc.search(".bg.bg-r").collect do |today|
-#  today_info={
-#    :name => today.search("h4").text
-#    :high => today.search("span.large_temp").text.strip
-    #:low => today.search
-#    :description => today.search("span.cond").text.strip
-#  }
-#  today_info
