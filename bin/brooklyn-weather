@@ -4,5 +4,5 @@ require "bundler/setup"
 require "./lib/brooklyn_weather"
 
 
-#encapsulates all of the code in one place
+
 BrooklynWeather::CLI.new.intro
