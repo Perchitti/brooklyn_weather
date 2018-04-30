@@ -7,13 +7,6 @@
       day
     end
 
-#def testing_scrape
-#  @day = BrooklynWeather::Scraper.forecast
-#  @day.all do |temp|
-#    puts "#{temp.name}"
-#  end
-#end
-
     def current
       @current_temp = BrooklynWeather::Scraper.current_scraper
         puts "            The current temperature is #{@current_temp}"
@@ -23,12 +16,12 @@
 
 
     def day
-      puts ""
-      puts "Would you like to see the forecast for 'today' or 'tomorrow'?"
-      puts "Gotta go? Type 'exit'."
-      puts ""
-      #still figuring this part out
-      input = gets.strip.downcase
+        puts ""
+        puts "Would you like to see the forecast for 'today' or 'tomorrow'?"
+        puts "Gotta go? Type 'exit'."
+        puts ""
+        input = gets.strip.downcase
+
         case input
         when "today"
           today_weather
