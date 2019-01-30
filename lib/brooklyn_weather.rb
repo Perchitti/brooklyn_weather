@@ -9,6 +9,7 @@ require_relative './brooklyn_weather/version'
 
 
 require_relative './brooklyn_weather/cli'
+require_relative './brooklyn_weather/forecast'
 
 
 
